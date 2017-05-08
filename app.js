@@ -4,11 +4,19 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var AV = require('leancloud-storage');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
 
+var APP_ID = 'O1omJYatYKWfIOV3hQl4EtQR-gzGzoHsz';
+var APP_KEY = 'ohRiLEwSumhibTPCP8gnH66V';
+AV.init({
+  appId: APP_ID,
+  appKey: APP_KEY
+});
+  
 var app = express();
 
 app.all('*', function(req, res, next) {
